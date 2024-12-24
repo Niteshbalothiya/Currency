@@ -1,10 +1,9 @@
 import React from 'react';
 import { AppBar, Container, MenuItem, Select, ThemeProvider, Toolbar, Typography, createTheme } from '@material-ui/core';
-import { CryptoState } from '../CryptoCon'; // Adjust the path to CryptoCon
+import { CryptoState } from '../CryptoContext';
 
 const Header = () => {
-  const { currency, setCurrency } = CryptoState(); // Access context values
-
+ /* const { currency , setCurrency} = CryptoState()*/
   const darkTheme = createTheme({
     palette: {
       type: 'dark',
@@ -16,17 +15,18 @@ const Header = () => {
       <AppBar color="transparent" position="static">
         <Container>
           <Toolbar>
-            <Typography className="text-lime-300 font-bold font-mono flex cursor-pointer">
+            <Typography className="text-lime-300 font-bold font-mono flex cursor-pointer " >
               CryptoScope
             </Typography>
             <Select
               variant="outlined"
               style={{ width: 100, height: 40, marginLeft: 15 }}
-              value={currency}
+             /* value={currency}*/
               onChange={(e) => setCurrency(e.target.value)}
             >
               <MenuItem value="USD">USD</MenuItem>
               <MenuItem value="INR">INR</MenuItem>
+              <MenuItem value="	GBP>">GBP</MenuItem>
             </Select>
           </Toolbar>
         </Container>

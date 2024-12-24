@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import CryptoCon from './CryptoCon'; // Import your CryptoCon provider
 import Header from './components/header'; // Import Header component
 import HomePage from './pages/HomePage'; // Import HomePage if it exists
 import CoinsPages from './pages/CoinsPages';
@@ -8,15 +7,16 @@ import CoinsPages from './pages/CoinsPages';
 
 const App = () => {
   return (
-    <CryptoCon> {/* Ensure the provider wraps the whole app */}
+<div className='bg-gray-900 min-h-screen'>
       <Router>
-        <Header />
+        <Header></Header>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/coins" element={<CoinsPages />} />
         </Routes>
       </Router>
-    </CryptoCon>
+      </div>
+    
   );
 };
 
