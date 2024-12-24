@@ -3,7 +3,7 @@ import { AppBar, Container, MenuItem, Select, ThemeProvider, Toolbar, Typography
 import { CryptoState } from '../CryptoContext';
 
 const Header = () => {
- /* const { currency , setCurrency} = CryptoState()*/
+  const { currency , setCurrency} = CryptoState()
   const darkTheme = createTheme({
     palette: {
       type: 'dark',
@@ -21,7 +21,7 @@ const Header = () => {
             <Select
               variant="outlined"
               style={{ width: 100, height: 40, marginLeft: 15 }}
-             /* value={currency}*/
+              value={currency}
               onChange={(e) => setCurrency(e.target.value)}
             >
               <MenuItem value="USD">USD</MenuItem>
