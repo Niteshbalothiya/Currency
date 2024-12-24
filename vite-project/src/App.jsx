@@ -1,28 +1,27 @@
-import { useState } from 'react'
-import './App.css'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import HomePage from "./pages/HomePage";
-import {CoinsPage }from "./pages/CoinsPage";
-import { colors, makeStyles } from '@material-ui/core';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CryptoCon from './CryptoCon'; // Import your CryptoCon provider
+import Header from './components/header'; // Import Header component
+import HomePage from './pages/HomePage'; // Import HomePage if it exists
+import CoinsPages from './pages/CoinsPages';
+ // Import CoinsPage if it exists
 
-function App() {
-
-
+const App = () => {
   return (
-    <Router>
-      <div className='text-white min-h-screen'>
+    <CryptoCon> {/* Ensure the provider wraps the whole app */}
+      <Router>
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/Coins/:id" element={<CoinsPage />} />
+          <Route path="/coins" element={<CoinsPages />} />
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </CryptoCon>
   );
-}
+};
+
+export default App;
 
 
 
 
-export default App
