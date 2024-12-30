@@ -1,27 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header'; // Import Header component
-import HomePage from './pages/HomePage'; // Import HomePage if it exists
-import CoinsPages from './pages/CoinsPages';
-// Import CoinsPage if it exists
+import Header from './components/Header'; // Assuming header is in components folder
+import HomePage from './pages/HomePage'; // Assuming homepage is defined
+import CoinsPages from './pages/CoinsPages'; // Assuming CoinsPages is in the pages folder
 
 const App = () => {
   return (
-    <div className='bg-gray-900 min-h-screen'>
+    <div className="bg-gray-900 min-h-screen">
       <Router>
-        <Header></Header>
+        <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/coins" element={<CoinsPages />} />
+          <Route path="/coins/:id" element={<CoinsPages />} /> {/* Updated route */}
         </Routes>
       </Router>
     </div>
-
   );
 };
 
 export default App;
-
-
-
-

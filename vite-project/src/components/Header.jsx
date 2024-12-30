@@ -3,7 +3,7 @@ import { AppBar, Container, MenuItem, Select, ThemeProvider, Toolbar, Typography
 import { CryptoState } from '../CryptoContext';
 
 const Header = () => {
-  const { currency , setCurrency} = CryptoState()
+  const { currency, setCurrency } = CryptoState();
   const darkTheme = createTheme({
     palette: {
       type: 'dark',
@@ -35,5 +35,3 @@ const Header = () => {
   );
 };
 export default Header;
-
-
