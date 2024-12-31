@@ -1,17 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header'; // Assuming header is in components folder
-import HomePage from './pages/HomePage'; // Assuming homepage is defined
-import CoinsPages from './pages/CoinsPages'; // Assuming CoinsPages is in the pages folder
+import Header from './components/header'; // Import Header component
+import HomePage from './pages/HomePage'; // Import HomePage
+import CoinsPages from './pages/CoinsPages'; // Import CoinsPages
 
 const App = () => {
   return (
-    <div className="bg-gray-900 min-h-screen">
+    <div className="bg-gray-900 min-h-screen text-white">
       <Router>
+        {/* Render the Header at the top */}
         <Header />
+        {/* Define Routes */}
         <Routes>
+          {/* Home Page Route */}
           <Route path="/" element={<HomePage />} />
-          <Route path="/coins/:id" element={<CoinsPages />} /> {/* Updated route */}
+          
+          {/* CoinsPages Route with Dynamic ID */}
+          <Route path="/coins/:id" element={<CoinsPages />} />
         </Routes>
       </Router>
     </div>
