@@ -19,10 +19,10 @@ const SelectButton = ({ children, selected, onClick }) => {
         color: 'black',
       },
       [theme.breakpoints.down('sm')]: {
-        width: '100%', // Full width on small screens
-        marginBottom: 10, // Spacing between buttons for stacked layout
+        width: '100%',
+        marginBottom: 10,
       },
-      width: '22%', // Default width for larger screens
+      width: '22%',
     },
   }));
 

@@ -18,7 +18,7 @@ import {
 } from '@material-ui/core';
 import { CoinList } from '../Config/Api';
 import { CryptoState } from '../CryptoContext';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const CoinsTable = () => {
   const [coins, setCoins] = useState([]);
@@ -28,7 +28,7 @@ const CoinsTable = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const { currency, symbol } = CryptoState();
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const fetchCoins = async () => {
     setLoading(true);
@@ -124,7 +124,7 @@ const CoinsTable = () => {
                           cursor: 'pointer',
                           fontFamily: 'Montserrat',
                         }}
-                        onClick={() => navigate(`/coins/${row.id}`)} // Navigate to CoinsPages
+                        onClick={() => navigate(`/coins/${row.id}`)}
                       >
                         <TableCell
                           component="th"
@@ -196,10 +196,8 @@ const CoinsTable = () => {
           page={page}
           rowsPerPage={rowsPerPage}
           onPageChange={(_, value) => setPage(value)}
-          onRowsPerPageChange={(e) => setRowsPerPage(e.target.value)}
+          onRowsPerPageChange={(e) => setRowsPerPage(parseInt(e.target.value, 10))}
           rowsPerPageOptions={[10, 20, 30]}
-          showFirstButton
-          showLastButton
         />
       </Container>
     </ThemeProvider>

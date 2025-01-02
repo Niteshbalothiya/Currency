@@ -7,6 +7,7 @@ import {
   createTheme,
   ThemeProvider,
   makeStyles,
+  Typography,
 } from '@material-ui/core';
 import { Line } from 'react-chartjs-2';
 import { chartDays } from '../Config/Data';
@@ -25,6 +26,7 @@ const CoinInfo = ({ coin }) => {
       console.error('Error fetching historical data:', error);
     }
   };
+console.log('data',historicData);
 
   useEffect(() => {
     fetchHistoricData();
@@ -35,7 +37,7 @@ const CoinInfo = ({ coin }) => {
       primary: {
         main: '#fff',
       },
-      type: 'dark',
+      mode: 'dark', // Updated from deprecated `type` to `mode`
     },
   });
 
@@ -57,7 +59,7 @@ const CoinInfo = ({ coin }) => {
     },
     chartWrapper: {
       width: '100%',
-      height: '400px', // Set a fixed height for the chart
+      height: '400px', // Fixed height for the chart
     },
     buttonWrapper: {
       display: 'flex',
@@ -76,56 +78,10 @@ const CoinInfo = ({ coin }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
-        {!historicData ? (
-          <CircularProgress
-            style={{ color: 'gold' }}
-            size={250}
-            thickness={1}
-          />
-        ) : (
-          <>
-            <div className={classes.chartWrapper}>
-              <Line
-                data={{
-                  labels: historicData.map((coin) => {
-                    const date = new Date(coin[0]);
-                    const time =
-                      date.getHours() > 12
-                        ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                        : `${date.getHours()}:${date.getMinutes()} AM`;
-                    return days === 1 ? time : date.toLocaleDateString();
-                  }),
-                  datasets: [
-                    {
-                      data: historicData.map((coin) => coin[1]),
-                      label: `Price (Past ${days} Days) in ${currency}`,
-                      borderColor: '#EEBC1D',
-                    },
-                  ],
-                }}
-                options={{
-                  elements: {
-                    point: {
-                      radius: 1,
-                    },
-                  },
-                  maintainAspectRatio: false,
-                }}
-              />
-            </div>
-            <div className={classes.buttonWrapper}>
-              {chartDays.map((day) => (
-                <SelectButton
-                  key={day.value}
-                  onClick={() => setDays(day.value)}
-                  selected={day.value === days}
-                >
-                  {day.label}
-                </SelectButton>
-              ))}
-            </div>
-          </>
-        )}
+       
+
+        
+        
       </div>
     </ThemeProvider>
   );
