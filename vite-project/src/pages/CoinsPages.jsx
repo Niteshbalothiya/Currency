@@ -74,6 +74,7 @@ const CoinsPages = () => {
     }
   };
 
+
   useEffect(() => {
     fetchCoin(); // Fetch data when the component mounts or `id` changes
   }, [id]);

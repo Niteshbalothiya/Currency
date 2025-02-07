@@ -9,9 +9,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
-import { Line } from 'react-chartjs-2';
-import { chartDays } from '../Config/Data';
-import SelectButton from './banner/SelectButton';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const CoinInfo = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
@@ -26,18 +24,22 @@ const CoinInfo = ({ coin }) => {
       console.error('Error fetching historical data:', error);
     }
   };
-console.log('data',historicData);
+
+  const rawData = historicData?.map((data, index) => ({
+    time: new Date(data[0]).toLocaleTimeString(), // Converts timestamp to readable format
+    value: data[1] // Extracts price
+  }));  
 
   useEffect(() => {
     fetchHistoricData();
-  }, [currency, days]);
+  }, [currency, days, coin]);
 
   const darkTheme = createTheme({
     palette: {
       primary: {
         main: '#fff',
       },
-      mode: 'dark', // Updated from deprecated `type` to `mode`
+      mode: 'dark',
     },
   });
 
@@ -81,6 +83,15 @@ console.log('data',historicData);
        
 
         
+      <ResponsiveContainer width="100%" height={400}>
+      <LineChart data={rawData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="time" />
+        <YAxis />
+        <Tooltip />
+        <Line type="monotone" dataKey="value" stroke="#8884d8" />
+      </LineChart>
+    </ResponsiveContainer>
         
       </div>
     </ThemeProvider>

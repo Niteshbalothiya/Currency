@@ -26,7 +26,7 @@ const Banner = () => {
        <div className={classes.tagline}>
         <Typography  style={{
           fontWeight:'bold',marginBottom:15,fontFamily:"Montserrat",color:'white', fontSize :"52px",  }} >Crypto SCOPE</Typography>
-          <Typography variant='subtitle'    style={{
+          <Typography variant='subtitle1'    style={{
           fontWeight:'bold',marginBottom:15,fontFamily:"Montserrat",color:"darkgrey",  textTransform:"capitalize"}} >Get all Info regarding your favourite Crypto Currency</Typography>
        </div>
         <Carousel></Carousel>

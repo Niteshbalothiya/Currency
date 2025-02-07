@@ -95,6 +95,7 @@ const CoinsTable = () => {
                 <TableRow>
                   {['Coin', 'Price', '24h Change', 'Market Cap'].map((head) => (
                     <TableCell
+                     component='th'
                       style={{
                         color: 'black',
                         fontWeight: '700',
