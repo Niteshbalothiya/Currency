@@ -1,12 +1,29 @@
-import React from 'react';
-import { AppBar, Container, MenuItem, Select, ThemeProvider, Toolbar, Typography, createTheme } from '@material-ui/core';
-import { CryptoState } from '../CryptoContext';
+import React from "react";
+import {
+  AppBar,
+  Container,
+  MenuItem,
+  Select,
+  ThemeProvider,
+  Toolbar,
+  Typography,
+  createTheme,
+} from "@material-ui/core";
+import { CryptoState } from "../CryptoContext";
 
 const Header = () => {
   const { currency, setCurrency } = CryptoState();
+
+  const availableCurrencies = [
+    "INR", "USD", "EUR", "JPY", "GBP", "AUD", "CAD", "CHF", "CNY", "HKD", "SGD"
+  ];
+
+  // Ensure selected currency is valid
+  const selectedCurrency = availableCurrencies.includes(currency) ? currency : "USD";
+
   const darkTheme = createTheme({
     palette: {
-      type: 'dark',
+      mode: "dark", // Updated to 'mode' instead of 'type'
     },
   });
 
@@ -15,18 +32,20 @@ const Header = () => {
       <AppBar color="transparent" position="static">
         <Container>
           <Toolbar>
-            <Typography className="text-lime-300 font-bold font-mono flex cursor-pointer " >
+            <Typography className="text-lime-300 font-bold font-mono flex cursor-pointer">
               CryptoScope
             </Typography>
             <Select
               variant="outlined"
-              style={{ width: 100, height: 40, marginLeft: 15 }}
-              value={currency}
+              style={{ width: 120, height: 40, marginLeft: 15 }}
+              value={selectedCurrency}
               onChange={(e) => setCurrency(e.target.value)}
             >
-              <MenuItem value="USD">USD</MenuItem>
-              <MenuItem value="INR">INR</MenuItem>
-              <MenuItem value="	GBP>">GBP</MenuItem>
+              {availableCurrencies.map((cur) => (
+                <MenuItem key={cur} value={cur}>
+                  {cur}
+                </MenuItem>
+              ))}
             </Select>
           </Toolbar>
         </Container>
@@ -34,4 +53,5 @@ const Header = () => {
     </ThemeProvider>
   );
 };
+
 export default Header;
